@@ -1,0 +1,5 @@
+[
+{"name": "MAN", "discount": "30", "description": "Для мужчин"},
+{"name": "WOMAN", "discount": "0", "description": "Для женщин"},
+{"name": "KIDS", "discount": "0", "description": "Для детей"},
+{"name": "ACCOSERIESE", "discount": "0", "description": "Аксессуары"}]

@@ -1,0 +1,13 @@
+[
+{"name": "Mango people t-shirt", "article": "0000000001", "image": "c1.png",  "price": "51.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "1"},
+{"name": "Mango people t-shirt", "article": "0000000002", "image": "c2.png",  "price": "52.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000003", "image": "c3.png",  "price": "53.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000004", "image": "c4.png",  "price": "54.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000005", "image": "c5.png",  "price": "55.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000006", "image": "c6.png",  "price": "56.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000007", "image": "c7.png",  "price": "57.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000008", "image": "c8.png",  "price": "58.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000009", "image": "c9.png",  "price": "59.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "3"},
+{"name": "Mango people t-shirt", "article": "0000000010", "image": "c10.png", "price": "70.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "1"},
+{"name": "Mango people t-shirt", "article": "0000000011", "image": "c11.png", "price": "71.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "1"},
+{"name": "Mango people t-shirt", "article": "0000000012", "image": "c12.png", "price": "72.00" , "id_Category": "1" , "id_Catalog": "1", "id_Brand": "1", "id_Color": "2", "id_Size": "L", "kolichestvo": "1"}]
