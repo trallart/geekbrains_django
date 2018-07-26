@@ -1,77 +1,21 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>BRAND</title>
-	<link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-	<div class="conteiner">
-		<div class="header">
-			<div class="header_top">
-				<a href="index.html" class="logo"></a>
-				<h1>BRAN<span>D</span></h1>
-				<div class="header_Browse">
-					<a href="#">Browse <span>&nbsp;&#9660;</span></a>
-				</div>
-				<input type="text" class="header_Search" placeholder="Search for Item...">
-				<div class="header_Search2">
-					<a href="#">&#128269;</a>					
-				</div>
-				<a href="/contacts/" class="header_cart"></a>
+{% extends "mainapp/base.html" %}
 
-				<div class="header_My-Account">
-					<a href="#">My Account <span>&nbsp;&#9660;</span></a>
-				</div>
-			</div> <!-- header_top-->
-			<div class="header_midle">
-				<ul class="header_menu">
-					<li><a href="/">home</a></li>
-					<li><a href="#">man</a></li>
-					<li><a href="#">woman</a></li>
-					<li><a href="#">kids</a></li>
-					<li><a href="#">accoseriese</a></li>
-					<li><a href="#">featured</a></li>
-					<li><a href="#">hot deals</a></li>
-				</ul>				
-			</div> <!-- header_midle-->
-		</div> <!-- header -->
-
+{% block menu %}
+	{% include "include/inc_menu.html" %}
+{% endblock %}
+{% block title %} {{title}} {% endblock %}
+{% block main %}
 		<div class="main">
-			<div class="main_new_arrivals">
-				<h1>new arrivals</h1>
-				<div class="main_new_arrivals_1">
-					<input type="radio" class="main_new_arrivals_2" id="rd-1" value="1" name="main_new_arrivals_2">
-					<label for="rd-1">home /</label>
-					
-					<input type="radio" class="main_new_arrivals_2" id="rd-2" value="2" name="main_new_arrivals_2">
-					<label for="rd-2">men /</label>
-					
-					<input type="radio" class="main_new_arrivals_2" id="rd-3" value="3" name="main_new_arrivals_2">
-					<label for="rd-3">new arrivals</label>
-				</div>
-				
-			</div>
-			
+			{% include "include/new_arrivals.html" %}
 
 			<div class="main_menu">
 				<input type="checkbox" class="category" id="hd-1">
 				<label for="hd-1">category</label>
 				<div class="list_category">
 					<ul>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">bags</a></li>
-						<li><a href="#">denim</a></li>
-						<li><a href="#">hoodeies & sweatshirts</a></li>
-						<li><a href="#">jackets & coats</a></li>
-						<li><a href="#">pants</a></li>
-						<li><a href="#">polos</a></li>
-						<li><a href="#">shirts</a></li>
-						<li><a href="#">shpes</a></li>
-						<li><a href="#">shorts</a></li>
-						<li><a href="#">sweaters & knits</a></li>
-						<li><a href="#">T-Shirts</a></li>
-						<li><a href="#">Tanks</a></li>
+                        {% for value in category_catalog %}
+						    <li><a href="#">{{ value.name_catalog }}</a></li>
+                        {% endfor %}
 					</ul>
 				</div> <!-- list_category-->
 
@@ -79,10 +23,9 @@
 				<label for="hd-2">brand</label>
 				<div class="list_category">
 					<ul>
-						<li><a href="#">Oscar de la Renta</a></li>
-						<li><a href="#">Louis Vuitton</a></li>
-						<li><a href="#">Prada</a></li>
-						<li><a href="#">Chanel</a></li>
+                        {% for value in category_brand %}
+						<li><a href="#">{{ value.name_brand }}</a></li>
+                        {% endfor %}
 					</ul>
 				</div> <!-- list_category-->
 
@@ -171,87 +114,17 @@
 				</div>
 
 				<div class="main_block4">
+					{% for value in data %}
 					<a href="/single/" class="main_block4_1">
 						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c1.png)"></div>
+							<div class="main_block4_2_image" style="background-image: url(/media/{{value.image}})"></div>
 							<div class="main_block4_2_dark"></div>
 							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
+							<h4>{{ value.name }}</h4>
+							<p>{{value.price}}</p>
 						</div>
 					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c2.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c3.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c4.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c5.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c6.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c7.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c8.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
-					<a href="/single/" class="main_block4_1">
-						<div class="main_block4_2">
-							<div class="main_block4_2_image" style="background-image: url(/static/img/c9.png)"></div>
-							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-							<h4>Mango people t-shirt</h4>
-							<p>$52.00</p>
-						</div>
-					</a>
+				{% endfor %}
 				</div> <!-- main_block4-->
 
 				<div class="page_bottom">
@@ -289,75 +162,5 @@
 				</div>
 			</div><!-- main_bottom -->
 		</div> <!-- main -->
+{% endblock %}
 
-		<div class="folder">
-			<div class="folder_top">
-				<div class="folder_top_block_1">
-					<div class="folder_top_block_1_image"></div> <!-- Для изменения прозрачности фона картинки-->
-					<div class="folder_top_block_1_1">
-						<p class="folder_top_block_text_1">&#34;Vestibulin quis porttibor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium&#34;<br></p>
-						<p class="folder_top_block_text_2">Bin Burhan <br><span>Dhaka, Bd</span></p>
-					</div>
-					<div class="folder_top_block_1_2">
-						<p>subcribe <br><span>for our newletter and promotion</span></p>
-					</div>
-					<input type="text" class="folder_top_block_1_3" placeholder="Enter Your Email">
-					<div class="folder_top_block_1_4"><a href="#">Subscribe</a></div>
-				</div>
-			</div><!-- folder_top-->
-				
-			<div class="folder_midle">
-				<div class="folder_midle_block1">
-					<div class="folder_midle_block1_logo">
-						<a href="index.html" class="logo"></a>
-						<h1>BRAN<span>D</span></h1>
-						<p>Objectively tranition extensive data rathet than cross functional solutions. Monotonectally syndicate multidisciolinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships. <br><br> Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
-					</div>
-				</div>  <!-- folder_midle_block1-->
-				<div class="folder_midle_block2">
-					<h2>company</h2>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">shop</a></li>
-						<li><a href="#">about</a></li>
-						<li><a href="#">how it works</a></li>
-						<li><a href="#">contact</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>Information</h2>
-					<ul>
-						<li><a href="#">Tearms & Condition</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">gow to buy</a></li>
-						<li><a href="#">how to sell</a></li>
-						<li><a href="#">promotion</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>shop category</h2>
-					<ul>
-						<li><a href="#">men</a></li>
-						<li><a href="#">woman</a></li>
-						<li><a href="#">child</a></li>
-						<li><a href="#">apparel</a></li>
-						<li><a href="#">brows аll</a></li>
-					</ul>
-				</div>
-			</div><!-- folder_midle-->
-
-			<div class="folder_bottom">
-				<div class="folder_bottom_text"><p>&copy; brand all rights reseved</p></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/f.png);"><a href="https://www.facebook.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/twiter.png);"><a href="https://twitter.com/"></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/in.png);"><a href="https://www.instagram.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/vk.png);"><a href="https://ru.foursquare.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/G.png);"><a href="https://plus.google.com/" ></a></div>
-			</div><!-- folder_bottom-->
-		</div><!-- folder-->
-		
-	</div><!-- conteiner-->
-
- 
-</body>
-</html>	

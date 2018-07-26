@@ -1,56 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>BRAND</title>
-	<link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-	<div class="conteiner">
-		<div class="header">
-			<div class="header_top">
-				<a href="/" class="logo"></a>
-				<h1>BRAN<span>D</span></h1>
-				<div class="header_Browse">
-					<a href="#">Browse <span>&nbsp;&#9660;</span></a>
-				</div>
-				<input type="text" class="header_Search" placeholder="Search for Item...">
-				<div class="header_Search2">
-					<a href="#">&#128269;</a>					
-				</div>
-				<a href="#" class="header_cart"></a>
-
-				<div class="header_My-Account">
-					<a href="#">My Account <span>&nbsp;&#9660;</span></a>
-				</div>
-			</div> <!-- header_top-->
-			<div class="header_midle">
-				<ul class="header_menu">
-					<li><a href="/">home</a></li>
-					<li><a href="/products/">man</a></li>
-					<li><a href="/products/">woman</a></li>
-					<li><a href="#">kids</a></li>
-					<li><a href="#">accoseriese</a></li>
-					<li><a href="#">featured</a></li>
-					<li><a href="#">hot deals</a></li>
-				</ul>				
-			</div> <!-- header_midle-->
-		</div> <!-- header -->
+{% extends "mainapp/base.html" %}
+		{% block menu %}
+		{% include "include/inc_menu.html" %}
+{% endblock %}
+{% block title %} {{title}} {% endblock %}
+{% block main %}
 
 		<div class="main">
-			<div class="main_new_arrivals">
-				<h1>new arrivals</h1>
-				<div class="main_new_arrivals_1">
-					<input type="radio" class="main_new_arrivals_2" id="rd-1" value="1" name="main_new_arrivals_2">
-					<label for="rd-1">home /</label>
-					
-					<input type="radio" class="main_new_arrivals_2" id="rd-2" value="2" name="main_new_arrivals_2">
-					<label for="rd-2">men /</label>
-					
-					<input type="radio" class="main_new_arrivals_2" id="rd-3" value="3" name="main_new_arrivals_2">
-					<label for="rd-3">new arrivals</label>
-				</div>
-			</div> <!-- main_new_arrivals -->
+			{% include "include/new_arrivals.html" %}
 
 			<div class="cart_title">
 				<div class="cart_title_product_detal"> product details</div>
@@ -133,74 +89,5 @@
 			<div class="main_bott_shopping_cart"></div>
 
 		</div> <!-- main -->
+		{% endblock %}
 
-		<div class="folder">
-			<div class="folder_top">
-				<div class="folder_top_block_1">
-					<div class="folder_top_block_1_image"></div> <!-- Для изменения прозрачности фона картинки-->
-					<div class="folder_top_block_1_1">
-						<p class="folder_top_block_text_1">&#34;Vestibulin quis porttibor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium&#34;<br></p>
-						<p class="folder_top_block_text_2">Bin Burhan <br><span>Dhaka, Bd</span></p>
-					</div>
-					<div class="folder_top_block_1_2">
-						<p>subcribe <br><span>for our newletter and promotion</span></p>
-					</div>
-					<input type="text" class="folder_top_block_1_3" placeholder="Enter Your Email">
-					<div class="folder_top_block_1_4"><a href="#">Subscribe</a></div>
-				</div>
-			</div><!-- folder_top-->
-				
-			<div class="folder_midle">
-				<div class="folder_midle_block1">
-					<div class="folder_midle_block1_logo">
-						<a href="index.html" class="logo"></a>
-						<h1>BRAN<span>D</span></h1>
-						<p>Objectively tranition extensive data rathet than cross functional solutions. Monotonectally syndicate multidisciolinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships. <br><br> Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
-					</div>
-				</div>  <!-- folder_midle_block1-->
-				<div class="folder_midle_block2">
-					<h2>company</h2>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">shop</a></li>
-						<li><a href="#">about</a></li>
-						<li><a href="#">how it works</a></li>
-						<li><a href="#">contact</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>Information</h2>
-					<ul>
-						<li><a href="#">Tearms & Condition</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">gow to buy</a></li>
-						<li><a href="#">how to sell</a></li>
-						<li><a href="#">promotion</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>shop category</h2>
-					<ul>
-						<li><a href="#">men</a></li>
-						<li><a href="#">woman</a></li>
-						<li><a href="#">child</a></li>
-						<li><a href="#">apparel</a></li>
-						<li><a href="#">brows аll</a></li>
-					</ul>
-				</div>
-			</div><!-- folder_midle-->
-
-			<div class="folder_bottom">
-				<div class="folder_bottom_text"><p>&copy; brand all rights reseved</p></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/f.png);"><a href="https://www.facebook.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/twiter.png);"><a href="https://twitter.com/"></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/in.png);"><a href="https://www.instagram.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/vk.png);"><a href="https://ru.foursquare.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/G.png);"><a href="https://plus.google.com/" ></a></div>
-			</div><!-- folder_bottom-->
-		</div><!-- folder-->
-
-	</div> <!-- conteiner-->
-
-</body>
-</html>	
