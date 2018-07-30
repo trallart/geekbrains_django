@@ -1,41 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>BRAND</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
-</head>
-<body>
-	<div class="conteiner">
-		<div class="header">
-			<div class="header_top">
-				<a href="index.html" class="logo"></a>
-				<h1>BRAN<span>D</span></h1>
-				<div class="header_Browse">
-					<a href="#">Browse <span>&nbsp;&#9660;</span></a>
-				</div>
-				<input type="text" class="header_Search" placeholder="Search for Item...">
-				<div class="header_Search2">
-					<a href="#">&#128269;</a>					
-				</div>
-				<a href="/contacts/" class="header_cart"></a>
+{% extends "mainapp/base.html" %}
 
-				<div class="header_My-Account">
-					<a href="#">My Account <span>&nbsp;&#9660;</span></a>
-				</div>
-			</div> <!-- header_top-->
-			<div class="header_midle">
-				<ul class="header_menu">
-					<li><a href="/">home</a></li>
-					<li><a href="/products/">man</a></li>
-					<li><a href="/products/">woman</a></li>
-					<li><a href="#">kids</a></li>
-					<li><a href="#">accoseriese</a></li>
-					<li><a href="#">featured</a></li>
-					<li><a href="#">hot deals</a></li>
-				</ul>				
-			</div> <!-- header_midle-->
-		</div> <!-- header -->
+{% block menu %}
+	{% include "include/inc_menu.html" %}
+{% endblock %}
+{% block title %} {{title}} {% endblock %}
+{% block main %}
+
 		<div class="main">
 			<div class="main_block1">
 				<div class="main_block1_0">
@@ -50,30 +20,30 @@
 			<div class="main_block2">
 				<div class="main_block2_man">
 					<div class="main_block2_man_1">
-						<a href="/products/" class="main_block2_man_2"></a> <!-- Картинка -->
+						<a href="{% url 'products' categories_id='for_men' %}" class="main_block2_man_2"></a> <!-- Картинка -->
 						<p></p>
-						<a href="/products/" class="main_block2_man_3">hot deal <br><span>for man</span></a> <!-- Текстовый блок -->
+						<a href="{% url 'products' categories_id='for_men'  %}" class="main_block2_man_3"> {{ for_men }} <br><span>for man</span></a> <!-- Текстовый блок -->
 					</div>
 				</div> <!-- Блок "для мужщин" -->
 				
 				<div class="main_block2_woman">
 					<div class="main_block2_woman_1">
-						<a href="#" class="main_block2_woman_2"></a> 
-						<a href="#" class="main_block2_woman_3">30% offer <br><span>woman</span></a>
+						<a href="{% url 'products' categories_id='for_woman' %}" class="main_block2_woman_2"></a>
+						<a href="{% url 'products' categories_id='for_woman' %}" class="main_block2_woman_3">{{ for_woman }} <br><span>woman</span></a>
 					</div>
 				</div> <!-- Блок "для женщин" -->
 
 				<div class="main_block2_kids">
 					<div class="main_block2_kids_1">
-						<a href="#" class="main_block2_kids_2"></a> 
-						<a href="#" class="main_block2_kids_3">newarrivals <br><span>for kids</span></a>
+						<a href="{% url 'products' categories_id='for_kids' %}" class="main_block2_kids_2"></a>
+						<a href="{% url 'products' categories_id='for_kids' %}" class="main_block2_kids_3">{{ for_kids}} <br><span>for kids</span></a>
 					</div>
 				</div> <!-- Блок дети -->
 
 			 	<div class="main_block2_accesories">
 					<div class="main_block2_accesories_1">
-						<a href="#" class="main_block2_accesories_2"></a> 
-						<a href="#" class="main_block2_accesories_3">lixirous & trendy <br><span>accesories</span></a> 
+						<a href="{% url 'products' categories_id='accesories' %}" class="main_block2_accesories_2"></a>
+						<a href="{% url 'products' categories_id='accesories' %}" class="main_block2_accesories_3">{{ accesories }} <br><span>accesories</span></a>
 					</div>
 				</div> <!-- Блок аксессуары -->
 			</div> <!-- main_block2 -->
@@ -84,79 +54,18 @@
 			</div><!-- main_block3-->
 
 			<div class="main_block4">
-				<a href="/single/" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/1.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/2.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/3.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/4.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/5.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/6.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/7.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				<a href="single" class="main_block4_1">
-					<div class="main_block4_2">
-						<div class="main_block4_2_image" style="background-image: url(/static/img/8.png)"></div>
-						<div class="main_block4_2_dark"></div>
-						<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
-						<h4>Mango people t-shirt</h4>
-						<p>$52.00</p>
-					</div>
-				</a>
-				
+				{% for value in data %}
+					<a href="/single/" class="main_block4_1">
+						<div class="main_block4_2">
+							<div class="main_block4_2_image" style="background-image: url(/media/{{value.image}})"></div>
+							<div class="main_block4_2_dark"></div>
+							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
+							<h4>{{ value.name }}</h4>
+							<p>{{value.price}}</p>
+						</div>
+					</a>
+				{% endfor %}
+
 				<div class="main_block4_3_Browse">
 					<a href="#">Brows all product<span>&nbsp;&nbsp;&#10144;</span></a>
 				</div> <!-- main_block4_3_Browse-->
@@ -179,73 +88,6 @@
 				</div><!-- main_block4_4-->
 			</div><!-- main_block4-->
 		</div><!-- main-->
+{% endblock %}
 					
-		<div class="folder">
-			<div class="folder_top">
-				<div class="folder_top_block_1">
-					<div class="folder_top_block_1_image"></div> <!-- Для изменения прозрачности фона картинки-->
-					<div class="folder_top_block_1_1">
-						<p class="folder_top_block_text_1">&#34;Vestibulin quis porttibor dui! Quisque viverra nunc mi, a pulvinar purus condimentum a. Aliquam condimentum mattis neque sed pretium&#34;<br></p>
-						<p class="folder_top_block_text_2">Bin Burhan <br><span>Dhaka, Bd</span></p>
-					</div>
-					<div class="folder_top_block_1_2">
-						<p>subcribe <br><span>for our newletter and promotion</span></p>
-					</div>
-					<input type="text" class="folder_top_block_1_3" placeholder="Enter Your Email">
-					<div class="folder_top_block_1_4"><a href="#">Subscribe</a></div>
-				</div>
-			</div><!-- folder_top-->
-				
-			<div class="folder_midle">
-				<div class="folder_midle_block1">
-					<div class="folder_midle_block1_logo">
-						<a href="#" class="logo"></a>
-						<h1>BRAN<span>D</span></h1>
-						<p>Objectively tranition extensive data rathet than cross functional solutions. Monotonectally syndicate multidisciolinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships. <br><br> Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
-					</div>
-				</div>  <!-- folder_midle_block1-->
-				<div class="folder_midle_block2">
-					<h2>company</h2>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">shop</a></li>
-						<li><a href="#">about</a></li>
-						<li><a href="#">how it works</a></li>
-						<li><a href="#">contact</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>Information</h2>
-					<ul>
-						<li><a href="#">Tearms & Condition</a></li>
-						<li><a href="#">Privacy policy</a></li>
-						<li><a href="#">gow to buy</a></li>
-						<li><a href="#">how to sell</a></li>
-						<li><a href="#">promotion</a></li>
-					</ul>
-				</div>
-				<div class="folder_midle_block2">
-					<h2>shop category</h2>
-					<ul>
-						<li><a href="men.html">men</a></li>
-						<li><a href="#">woman</a></li>
-						<li><a href="#">child</a></li>
-						<li><a href="#">apparel</a></li>
-						<li><a href="#">brows аll</a></li>
-					</ul>
-				</div>
-			</div><!-- folder_midle-->
 
-			<div class="folder_bottom">
-				<div class="folder_bottom_text"><p>&copy; brand all rights reseved</p></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/f.png);"><a href="https://www.facebook.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/twiter.png);"><a href="https://twitter.com/"></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/in.png);"><a href="https://www.instagram.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/vk.png);"><a href="https://ru.foursquare.com/" ></a></div>
-				<div class="folder_buttom" style="background-image: url(/static/img/G.png);"><a href="https://plus.google.com/" ></a></div>
-			</div><!-- folder_bottom-->
-		</div><!-- folder-->
-	</div><!-- conteiner-->
-	
-</body>
-</html>	

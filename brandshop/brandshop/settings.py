@@ -28,6 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainapp'  # добавление своего приложения
+    'mainapp',  # добавление своего приложения
+    'authapp'  # добавление приложения авторизации
+    ''
 ]
+
+AUTH_USER_MODEL = 'authapp.ShopUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -120,7 +126,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+
+
 # Записываем расположение файлов настройки
 SATATICFILES_DIR = (
     os.path.join(BASE_DIR, 'static')
 )
+
+MEDIA_ROOT = (os.path.join(BASE_DIR, 'media'))

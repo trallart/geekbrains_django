@@ -1,0 +1,7 @@
+[
+{"name_color": "red", "description": "красный"},
+{"name_color": "green", "description": "зеленый"},
+{"name_color": "blue", "description": "синий"},
+{"name_color": "yellow", "description": "желтый"},
+{"name_color": "white", "description": "белый"},
+{"name_color": "black", "description": "черный"}]
