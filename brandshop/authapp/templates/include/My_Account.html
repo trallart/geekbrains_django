@@ -1,0 +1,21 @@
+<!--<div class="header_My-Account">-->
+					<div>
+						<!--<a href="" title="Close" class="close_My-Account">X</a>-->
+						<!--<h4>Input user</h4>-->
+						<form class ="header_My-Account_login"  action ="{% url 'login' %}?next={{ request.path|urlencode }}" method="post">
+                    <!--{% csrf_token %}-->
+                    <!--{{ login_form.username }}-->
+                    <!--{{ login_form.password }}-->
+						<input type="text" class="modalDialog_My-Account_login" placeholder="username">
+						<input type="text" class="modalDialog_My-Account_login" placeholder="passwort">
+						<div class="LogIn"><a href="">LogIn</a></div>
+						<div class="Registration"><a href="">Registration</a></div>
+					<!--<input class="LogIn" type="submit" value="Login">-->
+                    <br>
+
+                </form>
+
+
+
+					</div>
+				<!--</div>-->

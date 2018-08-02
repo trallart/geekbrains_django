@@ -29,5 +29,6 @@ urlpatterns = [
     # url(r'^single/', mainapp.single_page),
     path('admin/', admin.site.urls),
     path('auth/', include('authapp.urls')),
+    # path('#openModal/', include('authapp.urls')),
     path('', include('mainapp.urls'))
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -21,9 +21,49 @@
 				</div>
 				<a href="/contacts/" class="header_cart"></a>
 
+
 				<div class="header_My-Account">
-					<a href="#">My Account <span>&nbsp;&#9660;</span></a>
-				</div>
+					{% if user.is_active %}
+						<a href="{% url 'logout' %}" > LogOut</a>
+					{% else %}
+						<a href="{% url 'login' %}#openModal/">My Account <span>&nbsp;&#9660;</span></a>
+					{% endif %}
+
+					<div class="modalDialog_My-Account" id="openModal/">
+						<div>
+							<a href="" title="Close" class="close_My-Account">X</a>
+							<h4>Input user</h4>
+							{% for message in messages %}
+							<div class="message {{ message.tags }}">
+								{{ message }}
+							</div>
+							{% endfor %}
+							<form   action ="{% url 'login' %}" method="post">
+								{% csrf_token %}
+								{{ login_form.username }}
+								{{ login_form.password }}
+								<input class="LogIn" type="submit" value="Login">
+								<div class="Registration"><a href="{% url 'register' %}#openModalRegister/">Registration</a></div>
+							</form>
+						</div>
+					</div><!-- modalDialog_My-Account-->
+
+					<div class="modalDialog_My-Account2" id="openModalRegister/">
+						<div>
+							<a href="" title="Close" class="close_My-Account">X</a>
+							<h4>Register user</h4>
+							<form action="{% url 'register' %}" method="post">
+								{% csrf_token %}
+								{{ register_form.username }}
+								{{ register_form.password }}
+								{{ register_form.password2 }}
+								<input class="Register" type="submit" value="Creat User">
+							</form>
+						</div>
+					</div> <!-- modalDialog_My-Account2-->
+				</div> <!-- header_My-Account-->
+
+
 			</div> <!-- header_top-->
 
 			 <div class="header_midle">

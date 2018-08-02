@@ -108,3 +108,6 @@ def contacts(reauest):
     }
     return render(reauest, 'mainapp/shopping_cart.html', content)
 
+def admines(request):
+    return render(request, 'mainapp/index.html')
+

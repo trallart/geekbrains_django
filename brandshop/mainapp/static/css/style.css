@@ -157,13 +157,16 @@
 	width: 130px;
 	height: 38px;
 	float: left;
-	margin-left: 26px;
+	margin-left: 126px;
 	margin-top: 32px;
 }
+
+
 .header .header_top .header_My-Account:active{
 	position: relative;
 	top: 3px;
 }
+
 
 .header .header_top .header_My-Account a{
 	display: block;
@@ -183,6 +186,249 @@
 	font-weight: 400;
 	line-height: 32px;/* Приближение из-за подстановки шрифтов */
 }
+
+/*.header .header_top .header_My-Account_login{
+	display: block;
+	position:relative;
+	float: left;
+	clear: both;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  #e6e6e6;
+	box-sizing: border-box;
+	background-color:  #ffffff;
+	width: 180px;
+	height: 30px;
+	padding-left: 10px;
+}*/
+
+.modalDialog_My-Account {
+	position: fixed;
+	font-family: Lato;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	display: none;
+	pointer-events: none;
+}
+
+.modalDialog_My-Account:target {
+	display: block;
+	pointer-events: auto;
+}
+
+.modalDialog_My-Account > div {
+	width: 300px;
+	height: 150px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -webkit-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -moz-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -o-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -ms-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
+}
+
+.modalDialog_My-Account .modalDialog_My-Account_login {
+	display: block;
+	float: left;
+	clear: both;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  #e6e6e6;
+	box-sizing: border-box;
+	background-color:  #ffffff;
+	width: 300px;
+	height: 30px;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+.modalDialog_My-Account .close_My-Account {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.modalDialog_My-Account .close:hover { background: #00d9ff; }
+
+.modalDialog_My-Account .LogIn {
+	background-color:  #f16d7f;
+	width: 100px;
+	height: 38px;
+	float: left;
+	margin-left: 0px;
+	margin-top: 10px;
+}
+
+.modalDialog_My-Account .LogIn a{
+	display: block;
+	font-family: Lato;
+	color:  #ffffff;
+	font-size: 15px;/* Приближение из-за подстановки шрифтов */
+	font-weight: 400;
+	line-height: 36px;/* Приближение из-за подстановки шрифтов */
+	text-decoration: none;
+	padding-left: 19px;
+}
+
+.modalDialog_My-Account .LogIn:active{
+	position: relative;
+	top: 3px;
+}
+
+.modalDialog_My-Account .Registration {
+	background-color:  #f16d7f;
+	width: 100px;
+	height: 38px;
+	float: right;
+	margin-top: 10px;
+}
+
+.modalDialog_My-Account .Registration a{
+	display: block;
+	font-family: Lato;
+	color:  #ffffff;
+	font-size: 15px;/* Приближение из-за подстановки шрифтов */
+	font-weight: 400;
+	line-height: 36px;/* Приближение из-за подстановки шрифтов */
+	text-decoration: none;
+	padding-left: 19px;
+}
+
+.modalDialog_My-Account .Registration:active{
+	position: relative;
+	top: 3px;
+}
+
+.modalDialog_My-Account2 {
+	position: fixed;
+	font-family: Lato;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	display: none;
+	pointer-events: none;
+}
+
+
+.modalDialog_My-Account2:target {
+	display: block;
+	pointer-events: auto;
+}
+
+
+.modalDialog_My-Account2 > div {
+	width: 300px;
+	height: 200px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #fff;
+	background: -webkit-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -moz-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -o-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -ms-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
+}
+
+.modalDialog_My-Account2 .close_My-Account {
+	background: #606061;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.modalDialog_My-Account2 .close:hover { background: #00d9ff; }
+
+
+
+.modalDialog_My-Account2 .modalDialog_My-Account_register {
+	display: block;
+	float: left;
+	clear: both;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  #e6e6e6;
+	box-sizing: border-box;
+	background-color:  #ffffff;
+	width: 300px;
+	height: 30px;
+	margin-top: 10px;
+	padding-left: 10px;
+}
+
+.modalDialog_My-Account2 .Register {
+	background-color:  #f16d7f;
+	width: 100px;
+	height: 38px;
+	float: left;
+	margin-left: 100px;
+	margin-top: 10px;
+}
+
+.modalDialog_My-Account2 .Register a{
+	display: block;
+	font-family: Lato;
+	color:  #ffffff;
+	font-size: 15px;/* Приближение из-за подстановки шрифтов */
+	font-weight: 400;
+	line-height: 36px;/* Приближение из-за подстановки шрифтов */
+	text-decoration: none;
+	padding-left: 19px;
+}
+
+.modalDialog_My-Account2 .Register:active{
+	position: relative;
+	top: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*КОНЕЦ header_top */
 
 /*НАЧАЛО header_midle */
@@ -2460,7 +2706,34 @@
 }
 
 
+/*------------Профиль пользователя--------------------*/
 
+.modalDialog_My-Account_Profile{
+	width: 1600px;
+	display: block;
+	float: left;
+	background: #fff;
+	background: -webkit-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -moz-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -o-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: -ms-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%);
+	background: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
+}
+
+.modalDialog_My-Account_Profile .edit_data{
+    display: block;
+	float: left;
+	clear: both;
+	border-style: solid;
+	border-width: 1px;
+	border-color:  #e6e6e6;
+	box-sizing: border-box;
+	background-color:  #ffffff;
+	width: 300px;
+	height: 30px;
+	margin-top: 10px;
+	padding-left: 10px;
+}
 
 
 

@@ -1,0 +1,35 @@
+{% extends "mainapp/base.html" %}
+
+{% block menu %}
+	{% include "include/inc_menu.html" %}
+{% endblock %}
+{% block title %} {{title}} {% endblock %}
+{% block main %}
+
+                    <div class="modalDialog_My-Account_Profile ">
+						<div>
+							<h4>Edit user</h4>
+							<form action="{% url 'edit' %}" method="post">
+                                <div class="main_block_edit">
+
+
+                                {% csrf_token %}
+
+                                {{ edit_form.avatar }}
+                                {{ edit_form.username }}
+                                {{ edit_form.first_name }}
+                                {{ edit_form.email }}
+                                {{ edit_form.age }}
+                                <div><img src="/media/{{ user.avatar }} " alt=""></div>
+								<input class="Register" type="submit" value="UbDate">
+                                 </div>
+							</form>
+						</div>
+					</div> <!-- .modalDialog_My-Account_Profile-->
+
+
+{% endblock %}
+
+
+					
+
