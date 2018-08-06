@@ -111,3 +111,18 @@ def contacts(reauest):
 def admines(request):
     return render(request, 'mainapp/index.html')
 
+
+# Вызов страницы с брендом, пока выводится главная страница
+def brand(reauest, categories_id='for_men', brand='Prada'):
+    global LINKS_MENU
+    data = Product.objects.all()[:8]
+    content = {
+        'title': '',
+        'for_men': 'hot deal',
+        'for_woman': '30% offer',
+        'for_kids': 'newarrivals',
+        'accesories': 'lixirous & trendy',
+        'links_menu': LINKS_MENU,
+        'data': data
+    }
+    return render(reauest, 'mainapp/index.html', content)

@@ -40,8 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',  # добавление своего приложения
-    'authapp'  # добавление приложения авторизации
-    ''
+    'authapp',  # добавление приложения авторизации
+    'basketapp', # новое приложение корзина
 ]
 
 AUTH_USER_MODEL = 'authapp.ShopUser'

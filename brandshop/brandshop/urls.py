@@ -23,12 +23,10 @@ from django.conf import settings
 # from mainapp.views import index
 
 urlpatterns = [
-    # url(r'^$', mainapp.main),
-    # url(r'^products/', mainapp.products),
-    # url(r'^contacts/', mainapp.contacts),
-    # url(r'^single/', mainapp.single_page),
     path('admin/', admin.site.urls),
     path('auth/', include('authapp.urls')),
-    # path('#openModal/', include('authapp.urls')),
+    path('basket/', include('basketapp.urls')),
+
+
     path('', include('mainapp.urls'))
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)

@@ -28,7 +28,7 @@
 				<div class="list_category">
 					<ul>
                         {% for value in category_brand %}
-						<li><a href="#">{{ value.name_brand }}</a></li>
+						<li><a href="{% url 'brand' categories_id='for_woman' brand='cuy' %}">{{ value.name_brand }}</a></li>
                         {% endfor %}
 					</ul>
 				</div> <!-- list_category-->
@@ -123,7 +123,11 @@
 						<div class="main_block4_2">
 							<div class="main_block4_2_image" style="background-image: url(/media/{{value.image}})"></div>
 							<div class="main_block4_2_dark"></div>
-							<div class="main_block4_2_dark_text"><object type="lol/wut"><a href="#">Add to Cart</a></object></div>
+							<div class="main_block4_2_dark_text">
+								<object type="lol/wut">
+									<a href="{% url 'basket_add' value.id %}">Add to Cart</a>
+								</object>
+							</div>
 							<h4>{{ value.name }}</h4>
 							<p>{{value.price}}</p>
 						</div>

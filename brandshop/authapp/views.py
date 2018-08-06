@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
 from django.contrib import auth, messages
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from mainapp.views import LINKS_MENU
 
 
