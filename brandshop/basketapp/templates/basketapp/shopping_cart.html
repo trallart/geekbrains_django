@@ -30,11 +30,11 @@
 					<div class="shoppint_product_parametrs"><p>Color: <span>{{value.product.Color.name_color}}</span><br>Size: <span>{{value.product.Size.name_size}}</span></p></div>
 					<div class="shoppint_product_price">$ {{value.product.price}}</div>
 					<div class="shoppint_product_quantity_2">
-						<input type="text" class="shoppint_product_quantity" placeholder="{{value.quantity}}">
+						<input type="text" class="shoppint_product_quantity" placeholder="{{ value.quantity }}">
 					</div>
 					<div class="shoppint_product_shiping">free</div>
-					<div class="shoppint_product_subtotal">$ {{ value.product.price }} * {{ value.quantity}}</div>
-					<div class="shoppint_product_action"><a href="#">&otimes;</a></div>
+					<div class="shoppint_product_subtotal">$ {{value.product_cost}} </div>
+					<div class="shoppint_product_action"><a href="{% url 'basket_remove' pk=value.id  %}">&otimes;</a></div>
 				</div> <!-- shoppint_product_detals -->
 			</div> <!-- shoppint_product -->
 			{% endfor %}

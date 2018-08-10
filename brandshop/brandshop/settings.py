@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',  # добавление своего приложения
+    'mainapp.templatetags', # регистрация своих тегов
     'authapp',  # добавление приложения авторизации
     'basketapp', # новое приложение корзина
 ]

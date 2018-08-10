@@ -19,7 +19,9 @@ def basket(request):
         'title': 'basket',
         'links_menu': LINKS_MENU,
         'data': data,
+        'basket': basket,
     }
+
 
     return render(request, 'basketapp/shopping_cart.html', content)
 
@@ -38,7 +40,7 @@ def basket_add(request, pk):
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))  # Возвращение на туже страничку, где добавляли товар
 
-def basket_remove(request):
+def basket_remove(request, pk):
     content = {}
     return render(request, 'basketapp/shopping_cart.html', content)
 
