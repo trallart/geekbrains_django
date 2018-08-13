@@ -71,24 +71,24 @@
 				</div>
 				<div class="si_ze">
 					<h2>size</h2><br><br>
-					<input type="checkbox" {{ size_chekbox.0 }} class="si_ze_1" id="s-1" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XXS' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.0.0}} class="si_ze_1" id="s-1" value="1" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params name='XXS' value=size_chekbox.0.1 params=request.GET.urlencode %}'">
 					<label for="s-1">xxs</label>
 						
-					<input type="checkbox" {{ size_chekbox.1 }} class="si_ze_1" id="s-2" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XS' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.1.0 }} class="si_ze_1" id="s-2" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XS' value=size_chekbox.1.1 params=request.GET.urlencode %}'">
 					<label for="s-2">xs&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.2 }} class="si_ze_1" id="s-3" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'S' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.2.0 }} class="si_ze_1" id="s-3" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'S' value=size_chekbox.2.1 params=request.GET.urlencode %}'">
 					<label for="s-3">s&nbsp;</label>
-					<input type="checkbox" {{ size_chekbox.3 }} class="si_ze_1" id="s-4" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'M' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.3.0 }} class="si_ze_1" id="s-4" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'M' value=size_chekbox.3.1 params=request.GET.urlencode %}'">
 					<label for="s-4">m &nbsp;</label> 
 					<br>	
-					<input type="checkbox" {{ size_chekbox.4 }} class="si_ze_1" id="s-5" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'L' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.4.0 }} class="si_ze_1" id="s-5" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'L' value=size_chekbox.4.1 params=request.GET.urlencode %}'">
 					<label for="s-5">L&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.5 }} class="si_ze_1" id="s-6" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XL' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.5.0 }} class="si_ze_1" id="s-6" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XL' value=size_chekbox.5.1 params=request.GET.urlencode %}'">
 					<label for="s-6">xl&nbsp;</label>
 					
-					<input type="checkbox" {{ size_chekbox.6 }} class="si_ze_1" id="s-7" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XXL' '1' request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.6.0 }} class="si_ze_1" id="s-7" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XXL' value=size_chekbox.6.1 params=request.GET.urlencode %}'">
 					<label for="s-7">xxl&nbsp;</label>
 				</div>
 
@@ -112,12 +112,12 @@
 					
 					<div class="show_1"><p>show</p></div>
 					<div class="show_2">
-						<select> type="select" list="">
-							<option value="0">03</option>
-							<option value="6">06</option>
-							<option value="9">09</option>
-							<option value="12">12</option>
-							<option value="15">15</option>
+						<select onchange="window.location.href=this.options[this.selectedIndex].value">
+							<option {{ show_by.0 }} VALUE="{% url_params 'show' '3' request.GET.urlencode %}">03</option>
+							<option {{ show_by.1 }} VALUE="{% url_params 'show' '6' request.GET.urlencode %}">06</option>
+							<option {{ show_by.2 }} value="{% url_params 'show' '9' request.GET.urlencode %}">09</option>
+							<option {{ show_by.3 }} value="{% url_params 'show' '12' request.GET.urlencode %}">12</option>
+							<option {{ show_by.4 }} value="{% url_params 'show' '15' request.GET.urlencode %}">15</option>
 						</select>
 					</div>
 				</div>
@@ -141,16 +141,18 @@
 				</div> <!-- main_block4-->
 
 				<div class="page_bottom">
-					<a href="#" ><</a>
+					{% if data.paginator.num_pages > 1 %}
+					<a href="{% url 'products' 'for_men' %}{% url_params name='page' value=data.previous_page_number params=request.GET.urlencode %}" >ghbdtn</a>
 					<span>1</span>
-					<a href="#" >2</a>
-					<a href="#" >3</a>
-					<a href="#" >4</a>
-					<a href="#" >5</a>
-					<a href="#" >6</a>
-					<a href="#" >...</a>
-					<a href="#" >20</a>
-					<a href="#" >></a>
+					{% endif %}
+					<!--<a href="#" >2</a>-->
+					<!--<a href="#" >3</a>-->
+					<!--<a href="#" >4</a>-->
+					<!--<a href="#" >5</a>-->
+					<!--<a href="#" >6</a>-->
+					<!--<a href="#" >...</a>-->
+					<!--<a href="#" >20</a>-->
+					<!--<a href="#" >></a>-->
 				</div>
 				<div class="View-All"><a href="#">View All</a></div>
 			</div><!-- main_catalog -->

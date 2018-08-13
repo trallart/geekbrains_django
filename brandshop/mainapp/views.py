@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import ProductCategory, Product, ProductCatalog, ProductBrand
 
+from django.core.paginator import Paginator, InvalidPage
+
 
 
 LINKS_MENU = [
@@ -49,14 +51,13 @@ def sorted_menu(data):
 
 # функция обработки чекбоксов Size на сайте
 def checkbox_size(request, value):
-    print('*'*50, value)
-    if value in request.GET and value=='1':
+    if value in request.GET and request.GET[value] != '0':
         name = 'checked'
-        value= '1'
+        checkout = '0'
     else:
         name = ''
-        value = '0'
-    return name, value
+        checkout = '1'
+    return name,  checkout, value
 
 
 
@@ -64,14 +65,14 @@ def checkbox_size(request, value):
 def products(reauest, categories_id='for_men'):
     global LINKS_MENU
 
-    # Обработка фильтра SortBy
+    # ОБРАБОТКА ФИЛЬТРА SortBy
     if 'sort' in reauest.GET:
         sort = reauest.GET['sort']
         messege = 'Вы искали сообщение: %r' % reauest.GET['sort']
-        print('*' * 50, messege)
+        # print('*' * 50, messege)
     else:
         sort = 'name'
-        print('*'*100)
+        # print('*'*100)
 
     if sort=="Size_id":
         sort_by = ['', 'selected', '']
@@ -80,10 +81,9 @@ def products(reauest, categories_id='for_men'):
     else:
         sort_by = ['selected', '', '']
 
-    # if 'size' in reauest.GET:
 
-
-    XSS = checkbox_size(reauest, 'XSS')
+    # ОБРАБОТКА ФИЛЬТРА SIZE (CHECKBOX)
+    XXS = checkbox_size(reauest, 'XXS')
     XS = checkbox_size(reauest, 'XS')
     S = checkbox_size(reauest, 'S')
     M = checkbox_size(reauest, 'M')
@@ -91,41 +91,49 @@ def products(reauest, categories_id='for_men'):
     XL = checkbox_size(reauest, 'XL')
     XXL = checkbox_size(reauest, 'XXL')
 
-    size_chekbox = [XSS, XS, S, M, L, XL, XXL]
+    size_chekbox = [XXS, XS, S, M, L, XL, XXL]
 
-    print('Значения чекбоксов', size_chekbox)
+    filter_size=[]
+    for value in size_chekbox:
+        if value[1] == '0':
+            filter_size.append(value[2])
+    if filter_size == []:
+        filter_size = ['XXS', 'XS' , 'S', 'M', 'L', 'XL', 'XXL']
 
-
-
-
-    if categories_id=="for_woman":
-        data = Product.objects.filter(Category_id=2).order_by(sort)
-        lst_catalog=sorted_menu(data)
-        lst_brand=sorted_menu(data)
-        category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
-        category_brand = ProductBrand.objects.filter(id__in=lst_brand)
-
-
-    elif categories_id=="for_kids":
-        data = Product.objects.filter(Category_id=3).order_by(sort)
-        lst_catalog = sorted_menu(data)
-        lst_brand = sorted_menu(data)
-        category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
-        category_brand = ProductBrand.objects.filter(id__in=lst_brand)
-
-
-    elif categories_id=="accesorie":
-        data = Product.objects.filter(Category_id=4).order_by(sort)
-        # В данной категории будем пока отображать все
-        category_catalog = ProductCatalog.objects.all()
-        category_brand = ProductBrand.objects.all()
-
+    # ОБРАБОТКА ФИЛЬТРА SHOW
+    start_show = 3
+    finish_show = 18
+    step_show = 3
+    if 'show' in reauest.GET:
+        show = reauest.GET['show']
+        messege = 'Вы искали сообщение: %r' % reauest.GET['show']
+        print('*' * 50, messege)
     else:
-        data = Product.objects.filter(Category_id=1).order_by(sort)
-        lst_catalog = sorted_menu(data)
-        lst_brand = sorted_menu(data)
-        category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
-        category_brand = ProductBrand.objects.filter(id__in=lst_brand)
+        show = '09'
+        print('*'*100)
+    show=int(show)
+    show_by=list(range(start_show,finish_show, step_show))
+    show_by.insert(show_by.index(show),'selected')
+
+    #**************************************************
+    try:
+        page_num = reauest.GET['page']
+    except KeyError:
+        page_num = 1
+    paginator = Paginator(Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort), show)
+    try:
+        data=paginator.page(page_num)
+        print('данные пагинатора: ', data)
+    except InvalidPage:
+        data = paginator.page(1)
+
+    # Фильтрация результатов
+    data1 = Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort)[:show]
+    lst_catalog = sorted_menu(data1)
+    lst_brand = sorted_menu(data1)
+    category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
+    category_brand = ProductBrand.objects.filter(id__in=lst_brand)
+    # print(category_brand)
 
 
 
@@ -136,8 +144,9 @@ def products(reauest, categories_id='for_men'):
         'category_menu': [category_catalog, categories_id],
         'category_brand': [category_brand, categories_id],
         'categories_id': categories_id,
-        'size_chekbox': [XSS, XS, S, M, L, XL, XXL],
+        'size_chekbox': [XXS, XS, S, M, L, XL, XXL],
         'sortby': sort_by,
+        'show_by': show_by,
     }
     # print("Печать конткнта", content)
     return render(reauest, 'mainapp/men.html', content)
