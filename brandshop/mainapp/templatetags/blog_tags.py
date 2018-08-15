@@ -10,9 +10,9 @@ def url_params(name, value, params=None):
 #     print('Имя', name)
 #     print('Значение', value)
 #     print('Параметр', params)
-    url = '?' + name + '=' + value
+    url = '?' + name + '=' + str(value)
     if params:
         qs = '&'.join(p for p in params.split('&') if p.split('=')[0] != name)
         url = url + '&' + qs
-    # print(url)
+    print(url)
     return url

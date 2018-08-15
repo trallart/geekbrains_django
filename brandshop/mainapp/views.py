@@ -60,8 +60,7 @@ def checkbox_size(request, value):
     return name,  checkout, value
 
 
-
-# Вызов каталога товаров
+#-------Вызов каталога товаров-----------------------------------------------------
 def products(reauest, categories_id='for_men'):
     global LINKS_MENU
 
@@ -73,7 +72,6 @@ def products(reauest, categories_id='for_men'):
     else:
         sort = 'name'
         # print('*'*100)
-
     if sort=="Size_id":
         sort_by = ['', 'selected', '']
     elif sort=='price':
@@ -106,36 +104,44 @@ def products(reauest, categories_id='for_men'):
     step_show = 3
     if 'show' in reauest.GET:
         show = reauest.GET['show']
-        messege = 'Вы искали сообщение: %r' % reauest.GET['show']
-        print('*' * 50, messege)
+        # messege = 'Вы искали сообщение: %r' % reauest.GET['show']
+        # print('*' * 50, messege)
     else:
         show = '09'
-        print('*'*100)
     show=int(show)
     show_by=list(range(start_show,finish_show, step_show))
-    show_by.insert(show_by.index(show),'selected')
+    show_by.insert(show_by.index(show), 'selected')
 
-    #**************************************************
+    # Обработка кнопки ViewAll
+    try:
+        view = reauest.GET['view_all']
+        view = int(view)
+    except KeyError:
+        view = 0
+
+
+    #Обработка пагинатора
     try:
         page_num = reauest.GET['page']
     except KeyError:
         page_num = 1
-    paginator = Paginator(Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort), show)
+
+    if view != 0:
+        paginator = Paginator(Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort), show*view)
+    else:
+        paginator = Paginator(Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort), show)
     try:
         data=paginator.page(page_num)
-        print('данные пагинатора: ', data)
     except InvalidPage:
         data = paginator.page(1)
 
-    # Фильтрация результатов
-    data1 = Product.objects.filter(Category__name=categories_id, Size__name_size__in=filter_size).order_by(sort)[:show]
+    # Фильтрация результатов для бокового
+    data1 = Product.objects.filter(Category__name=categories_id).all()
     lst_catalog = sorted_menu(data1)
     lst_brand = sorted_menu(data1)
     category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
     category_brand = ProductBrand.objects.filter(id__in=lst_brand)
     # print(category_brand)
-
-
 
     content = {
         'title': 'products',
@@ -152,31 +158,77 @@ def products(reauest, categories_id='for_men'):
     return render(reauest, 'mainapp/men.html', content)
 
 
+#-------Вызов функции фильтрации товара по каталогу и бренду----------------------------------------------------
 def catalog_filter(request, categories_id, catalog_id):
     global LINKS_MENU
+
+    # ОБРАБОТКА ФИЛЬТРА SortBy
+    if 'sort' in request.GET:
+        sort = request.GET['sort']
+        print('1111111111', sort)
+    else:
+        sort = 'name'
+    if sort == "Size_id":
+        sort_by = ['', 'selected', '']
+    elif sort == 'price':
+        sort_by = ['', '', 'selected']
+    else:
+        sort_by = ['selected', '', '']
+
+    # ОБРАБОТКА ФИЛЬТРА SHOW
+    start_show = 3
+    finish_show = 18
+    step_show = 3
+    if 'show' in request.GET:
+        show = request.GET['show']
+        # messege = 'Вы искали сообщение: %r' % reauest.GET['show']
+        # print('*' * 50, messege)
+    else:
+        show = '09'
+    show = int(show)
+    show_by = list(range(start_show, finish_show, step_show))
+    show_by.insert(show_by.index(show), 'selected')
+
+
     print('+'*100)
     print(categories_id, 'Имя категории')
     print(catalog_id, 'Имя каталога')
     # Нахождение Индекса категории и каталога
-    catalog = ProductCatalog.objects.filter(name_catalog=catalog_id)
-    print(catalog)
     category = ProductCategory.objects.filter(name=categories_id)
-    print(category)
-    index_catalog=catalog[0].id
-    index_category=category[0].id
-    print(index_catalog, index_category)
+    try:
+        catalog = ProductCatalog.objects.filter(name_catalog=catalog_id)
+        catalog[0]  # Вызывает исключение если данные не находятся в базе
+    except IndexError:
+        catalog = False
+    try:
+        brand = ProductBrand.objects.filter(name_brand=catalog_id)
+        brand[0]  # Вызывает исключение если данные не находятся в базе
+    except IndexError:
+        # Необходимо будет вызвать, страница не найдена
+        brand = False
 
 
-    # Фильтрация базу даннных по категории и каталогу
-    data = Product.objects.filter(Category_id=index_category, Catalog_id=index_catalog)
-    print(data, 'Данные по 2-м фильтрам')
-    # Формирование списка каталога
-    data_filter = Product.objects.filter(Category_id=index_category)
-    print(data_filter, 'Фильтр данных по категории')
-    lst_catalog=sorted_menu(data_filter)
-    lst_brand=sorted_menu(data_filter)
+    # Обработка категории
+    # index_category = category[0].id
+    data_filter = Product.objects.filter(Category__name=categories_id).all()
+    lst_catalog = sorted_menu(data_filter)
+    lst_brand = sorted_menu(data_filter)
     category_catalog = ProductCatalog.objects.filter(id__in=lst_catalog)
     category_brand = ProductBrand.objects.filter(id__in=lst_brand)
+    print('-'*100)
+
+    # Обработка каталога
+    if catalog is not False:
+        index_catalog = catalog[0].id  # id таблицы каталога
+        # Фильтрация базу даннных по категории и каталогу
+        data = Product.objects.filter(Category__name=categories_id, Catalog_id=index_catalog).order_by(sort)[:show]
+    elif brand is not False:
+        index_catalog = brand[0].id  # id таблицы каталога
+        # Фильтрация базу даннных по категории и каталогу
+        data = Product.objects.filter(Category__name=categories_id, Brand_id=index_catalog).order_by(sort)[:show]
+    else:
+        data = []
+
 
     content = {
         'title': 'products',
@@ -185,7 +237,8 @@ def catalog_filter(request, categories_id, catalog_id):
         'category_catalog': category_catalog,
         'category_brand': [category_brand, categories_id],
         'category_menu': [category_catalog, categories_id],
-
+        'sortby': sort_by,
+        'show_by': show_by,
     }
     # print("Печать конткнта", content)
     return render(request, 'mainapp/men.html', content)

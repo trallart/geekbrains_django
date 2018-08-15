@@ -37,9 +37,8 @@
                         {% for value in category_brand %}
 
 							{% if value == category_brand.0 %}
-
 								{% for index in value %}
-									<li><a href="{% url 'brand_filter' categories_id=category_brand.1 brand_id=index.name_brand catalog_id='brand:' %}">{{ index.name_brand }}</a></li>
+									<li><a href="{% url 'catalog_filter' categories_id=category_brand.1 catalog_id=index.name_brand %}">{{ index.name_brand }}</a></li>
                         		{% endfor %}
 							{%endif%}
 						{% endfor %}
@@ -71,24 +70,24 @@
 				</div>
 				<div class="si_ze">
 					<h2>size</h2><br><br>
-					<input type="checkbox" {{ size_chekbox.0.0}} class="si_ze_1" id="s-1" value="1" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params name='XXS' value=size_chekbox.0.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.0.0}} class="si_ze_1" id="s-1" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params name='XXS' value=size_chekbox.0.1 params=request.GET.urlencode %}'">
 					<label for="s-1">xxs</label>
 						
-					<input type="checkbox" {{ size_chekbox.1.0 }} class="si_ze_1" id="s-2" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XS' value=size_chekbox.1.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.1.0 }} class="si_ze_1" id="s-2" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XS' value=size_chekbox.1.1 params=request.GET.urlencode %}'">
 					<label for="s-2">xs&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.2.0 }} class="si_ze_1" id="s-3" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'S' value=size_chekbox.2.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.2.0 }} class="si_ze_1" id="s-3" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'S' value=size_chekbox.2.1 params=request.GET.urlencode %}'">
 					<label for="s-3">s&nbsp;</label>
-					<input type="checkbox" {{ size_chekbox.3.0 }} class="si_ze_1" id="s-4" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'M' value=size_chekbox.3.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.3.0 }} class="si_ze_1" id="s-4" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'M' value=size_chekbox.3.1 params=request.GET.urlencode %}'">
 					<label for="s-4">m &nbsp;</label> 
 					<br>	
-					<input type="checkbox" {{ size_chekbox.4.0 }} class="si_ze_1" id="s-5" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'L' value=size_chekbox.4.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.4.0 }} class="si_ze_1" id="s-5" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'L' value=size_chekbox.4.1 params=request.GET.urlencode %}'">
 					<label for="s-5">L&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.5.0 }} class="si_ze_1" id="s-6" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XL' value=size_chekbox.5.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.5.0 }} class="si_ze_1" id="s-6" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XL' value=size_chekbox.5.1 params=request.GET.urlencode %}'">
 					<label for="s-6">xl&nbsp;</label>
 					
-					<input type="checkbox" {{ size_chekbox.6.0 }} class="si_ze_1" id="s-7" value="0" name="si_ze" onclick="location.href = '{% url 'products' 'for_men' %}{% url_params 'XXL' value=size_chekbox.6.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.6.0 }} class="si_ze_1" id="s-7" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XXL' value=size_chekbox.6.1 params=request.GET.urlencode %}'">
 					<label for="s-7">xxl&nbsp;</label>
 				</div>
 
@@ -140,21 +139,49 @@
 				{% endfor %}
 				</div> <!-- main_block4-->
 
+				<!-- формирование пагинатора -->
+				{% if data.paginator.num_pages > 1 %}
 				<div class="page_bottom">
-					{% if data.paginator.num_pages > 1 %}
-					<a href="{% url 'products' 'for_men' %}{% url_params name='page' value=data.previous_page_number params=request.GET.urlencode %}" >ghbdtn</a>
-					<span>1</span>
+					{% if data.has_previous %}
+						<a href="{{ request.path }}{% url_params  name='page' value=data.previous_page_number params=request.GET.urlencode %}" ><</a>
+					{% else %}
+						<span><</span>
 					{% endif %}
-					<!--<a href="#" >2</a>-->
-					<!--<a href="#" >3</a>-->
-					<!--<a href="#" >4</a>-->
-					<!--<a href="#" >5</a>-->
-					<!--<a href="#" >6</a>-->
-					<!--<a href="#" >...</a>-->
-					<!--<a href="#" >20</a>-->
-					<!--<a href="#" >></a>-->
+					{% for pn in data.paginator.page_range %}
+						{% if pn > data.number and data.number|add:'-2' < 0 and pn < data.number|add:'5' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn > data.number and data.number|add:'-3' < 0 and pn < data.number|add:'4' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn < data.number and pn > data.number|add:'-3' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn < data.number and data.number|add:'1' > data.paginator.num_pages and pn > data.number|add:'-5' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn < data.number and data.number|add:'2' > data.paginator.num_pages and pn > data.number|add:'-4' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn > data.number and pn < data.number|add:'3' %}
+							<a href="{{ request.path }}{% url_params  name='page' value=pn params=request.GET.urlencode %}" >{{ pn }}</a>
+						{% elif pn == data.number %}
+							<span>{{ pn }}</span>
+						{% endif %}
+					{% endfor %}
+					<span>...</span>
+					{% if data.number != data.paginator.num_pages %}
+						<a href="{{ request.path }}{% url_params  name='page' value=data.paginator.num_pages params=request.GET.urlencode %}">{{ data.paginator.num_pages }}</a>
+					{% else %}
+						<span>{{ data.paginator.num_pages }}</span>
+					{% endif %}
+					{% if data.has_next %}
+						<a href="{{ request.path }}{% url_params  name='page' value=data.next_page_number params=request.GET.urlencode %}" >></a>
+					{% else %}
+						<span>></span>
+					{% endif %}
 				</div>
-				<div class="View-All"><a href="#">View All</a></div>
+
+				<div class="View-All">
+					<a href="{{ request.path }}{% url_params  name='view_all' value=data.paginator.num_pages params=request.GET.urlencode %}">View All</a>
+				</div>
+				{% endif %}
+
 			</div><!-- main_catalog -->
 			
 			<div class="main_bott"></div>

@@ -1648,6 +1648,7 @@
 	background-color:  #ffffff;
 	display: block;
 	float: left;
+	clear: both;
 	width: 261px;
 	height: 44px;
 	margin-top: 43px;
