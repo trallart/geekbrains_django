@@ -1,7 +1,6 @@
 {% extends "mainapp/base.html" %}
 {% load blog_tags %}
 
-
 {% block My_Account %}
     {% include "include/My_Account.html" %}
 {% endblock %}
@@ -12,14 +11,11 @@
 {% block main %}
 		<div class="main">
 			{% include "include/new_arrivals.html" %}
-
 			<div class="main_menu">
 				<input type="checkbox" class="category" id="hd-1">
 				<label for="hd-1">category</label>
 				<div class="list_category">
 					<ul>
-						{{request.path}}
-
                         {% for value in category_menu %}
 							{% if value == category_menu.0 %}
 								{% for index in value %}
@@ -35,7 +31,6 @@
 				<div class="list_category">
 					<ul>
                         {% for value in category_brand %}
-
 							{% if value == category_brand.0 %}
 								{% for index in value %}
 									<li><a href="{% url 'catalog_filter' categories_id=category_brand.1 catalog_id=index.name_brand %}">{{ index.name_brand }}</a></li>
@@ -51,57 +46,57 @@
 			<div class="main_catalog">
 				<div class="trending_now">
 					<h2>trending now</h2><br><br>
-					<input type="checkbox" class="trending_now_2" id="tr_n-1" value="0" name="trending_now_2">
-					<label for="tr_n-1">Bohemian |&nbsp;</label>
-						
-					<input type="checkbox" class="trending_now_2" id="tr_n-2" value="0" name="trending_now_2">
-					<label for="tr_n-2">Floral |&nbsp;</label>
-						
-					<input type="checkbox" class="trending_now_2" id="tr_n-3" value="0" name="trending_now_2">
-					<label for="tr_n-3">Lace&nbsp;</label>
-					<input type="checkbox" class="trending_now_2" id="tr_n-4" value="0" name="trending_now_2">
-					<label for="tr_n-4">Floral |&nbsp;</label>
-						
-					<input type="checkbox" class="trending_now_2" id="tr_n-5" value="0" name="trending_now_2">
-					<label for="tr_n-5">Lace |&nbsp;</label>
-						
-					<input type="checkbox" class="trending_now_2" id="tr_n-6" value="0" name="trending_now_2">
-					<label for="tr_n-6">Bohemian&nbsp;</label>
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-1" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-1">Bohemian |&nbsp;</label>-->
+						<!---->
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-2" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-2">Floral |&nbsp;</label>-->
+						<!---->
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-3" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-3">Lace&nbsp;</label>-->
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-4" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-4">Floral |&nbsp;</label>-->
+						<!---->
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-5" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-5">Lace |&nbsp;</label>-->
+						<!---->
+					<!--<input type="checkbox" class="trending_now_2" id="tr_n-6" value="0" name="trending_now_2">-->
+					<!--<label for="tr_n-6">Bohemian&nbsp;</label>-->
 				</div>
 				<div class="si_ze">
 					<h2>size</h2><br><br>
-					<input type="checkbox" {{ size_chekbox.0.0}} class="si_ze_1" id="s-1" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params name='XXS' value=size_chekbox.0.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.0.0}} class="si_ze_1" id="s-1" onclick="location.href = '{{ request.path }}{% url_params name='XXS' value=size_chekbox.0.1 params=request.GET.urlencode %}'">
 					<label for="s-1">xxs</label>
 						
-					<input type="checkbox" {{ size_chekbox.1.0 }} class="si_ze_1" id="s-2" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XS' value=size_chekbox.1.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.1.0 }} class="si_ze_1" id="s-2" onclick="location.href = '{{ request.path }}{% url_params 'XS' value=size_chekbox.1.1 params=request.GET.urlencode %}'">
 					<label for="s-2">xs&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.2.0 }} class="si_ze_1" id="s-3" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'S' value=size_chekbox.2.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.2.0 }} class="si_ze_1" id="s-3" onclick="location.href = '{{ request.path }}{% url_params 'S' value=size_chekbox.2.1 params=request.GET.urlencode %}'">
 					<label for="s-3">s&nbsp;</label>
-					<input type="checkbox" {{ size_chekbox.3.0 }} class="si_ze_1" id="s-4" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'M' value=size_chekbox.3.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.3.0 }} class="si_ze_1" id="s-4" onclick="location.href = '{{ request.path }}{% url_params 'M' value=size_chekbox.3.1 params=request.GET.urlencode %}'">
 					<label for="s-4">m &nbsp;</label> 
 					<br>	
-					<input type="checkbox" {{ size_chekbox.4.0 }} class="si_ze_1" id="s-5" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'L' value=size_chekbox.4.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.4.0 }} class="si_ze_1" id="s-5" onclick="location.href = '{{ request.path }}{% url_params 'L' value=size_chekbox.4.1 params=request.GET.urlencode %}'">
 					<label for="s-5">L&nbsp;</label>
 						
-					<input type="checkbox" {{ size_chekbox.5.0 }} class="si_ze_1" id="s-6" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XL' value=size_chekbox.5.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.5.0 }} class="si_ze_1" id="s-6" onclick="location.href = '{{ request.path }}{% url_params 'XL' value=size_chekbox.5.1 params=request.GET.urlencode %}'">
 					<label for="s-6">xl&nbsp;</label>
 					
-					<input type="checkbox" {{ size_chekbox.6.0 }} class="si_ze_1" id="s-7" name="si_ze" onclick="location.href = '{{ request.path }}{% url_params 'XXL' value=size_chekbox.6.1 params=request.GET.urlencode %}'">
+					<input type="checkbox" {{ size_chekbox.6.0 }} class="si_ze_1" id="s-7" onclick="location.href = '{{ request.path }}{% url_params 'XXL' value=size_chekbox.6.1 params=request.GET.urlencode %}'">
 					<label for="s-7">xxl&nbsp;</label>
 				</div>
 
-				<div class="price">
-					<h2>price</h2><br><br>
-					<input type="range" class="price_1" min="0 $" max="1000 $" id="pr_1" value="0" name="price">
-					<label for="pr_1"></label>
-				</div>
+				<!--Обработать данный флажок после разбора с javascript -->
+				<!--<div class="price">-->
+					<!--<h2>price</h2><br><br>-->
+					<!--<input type="range" class="price_1" min="0 $" max="1000 $" id="pr_1" value="0" name="price">-->
+					<!--<label for="pr_1"></label>-->
+				<!--</div>-->
 						
 
 				<div class="sort">
 					<div class="sort_1"><p>sort by</p></div>
 					<div class="sort_2">
-
 						<select onchange="window.location.href=this.options[this.selectedIndex].value">
     						<option {{ sortby.0 }} VALUE="{% url_params 'sort' 'name' request.GET.urlencode %}">Name</option>
    							<option {{ sortby.1 }} VALUE="{% url_params 'sort' 'Size_id' request.GET.urlencode %}">Size</option>

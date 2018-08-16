@@ -22,7 +22,6 @@ def basket(request):
         'basket': basket,
     }
 
-
     return render(request, 'basketapp/shopping_cart.html', content)
 
 
