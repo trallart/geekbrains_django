@@ -24,13 +24,17 @@
 			</div> <!-- cart_title -->
 			{% for value in data %}
 			<div class="shoppint_product">
+
 				<div class="shoppint_product_detals">
 					<div class="shoppint_product_image"  style="background-image: url(/media/{{value.product.image}}); background-size: cover;"><a href="#" class="shoppint_product_image_2"></a></div>
 					<div class="shoppint_product_title">{{ value.product.name}}</div>
 					<div class="shoppint_product_parametrs"><p>Color: <span>{{value.product.Color.name_color}}</span><br>Size: <span>{{value.product.Size.name_size}}</span></p></div>
 					<div class="shoppint_product_price">$ {{value.product.price}}</div>
 					<div class="shoppint_product_quantity_2">
-						<input type="text" class="shoppint_product_quantity" placeholder="{{ value.quantity }}">
+						<form method="POST" action="{% url 'basket' %}" id='as'>
+							{% csrf_token %}
+							<input type="text" class="shoppint_product_quantity" placeholder="{{ value.quantity }}" name="{{value.product_id}}" >
+						</form>
 					</div>
 					<div class="shoppint_product_shiping">free</div>
 					<div class="shoppint_product_subtotal">$ {{value.product_cost}} </div>
@@ -38,7 +42,9 @@
 				</div> <!-- shoppint_product_detals -->
 			</div> <!-- shoppint_product -->
 			{% endfor %}
-
+					<script>
+						document.getElementyByID('as').submit()
+					</script>
 
 			<div class="shopping_cart_clear"> <a href="#">clear shopping cart</a></div>
 			<div class="shopping_cart_continue"> <a href="#">continue shopping</a></div>

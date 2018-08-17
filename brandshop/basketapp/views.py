@@ -14,6 +14,18 @@ def basket(request):
     global LINKS_MENU
     data = Basket.objects.all()
 
+    for index in data:
+
+        if str(index.product_id) in request.POST:
+            count_product = request.POST[str(index.product_id)]  # Новое колличество товара
+            try:
+                count_product = int(count_product)
+            except ValueError:
+                continue
+            print('+' * 75, count_product)
+            index.quantity = count_product
+            index.save()
+
 
     content = {
         'title': 'basket',
